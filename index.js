@@ -27,15 +27,21 @@ async function run (){
         });
         // display one propertis
         app.get('/services/:id',async(req,res)=>{
-            const id =(req.params.id);
+        const id =(req.params.id);
         console.log('id',id)
        // const value=JSON.stringify(id);
-       const abc=new ObjectId(id);
-      console.log('abc',abc);
-       const query={_id:abc}
-       const onserviced=await services.findOne(query)
+       const query={_id: new ObjectId(id)};
+       const onserviced=await services.findOne(query);
        res.send(onserviced)
-        })
+        });
+        // app.get('/checkOut/:id',async(req,res)=>{
+        //     const id =req.params.id;
+        //     console.log('checkout',id);
+        //     const query={_id:new ObjectId(id)};
+        //     const checkd=await services.findOne(query);
+        //     res.send(checkd)
+        // })
+        // app.get('/checkOut/:')
         //post one propertis
         app.post('/services',async(req,res)=>{
             const newService=req.body;
